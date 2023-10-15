@@ -34,20 +34,20 @@
 
     <div class="container">
         <h1> Start adding your Notes to the database</h1>
-        <form method="POST">
-            
+        <form action="/" method="POST">
+
             <div class="mb-3">
               <label for="title" class="form-label">Note Title</label>
-              <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+              <input type="text" class="form-control" name="title" aria-describedby="emailHelp">
             </div>
     
             <div class="mb-3">
                 <label for="desc" class="form-label">Note Description</label>
-                <input type="text" class="form-control" id="desc" aria-describedby="emailHelp">
+                <input type="text" class="form-control" name="desc" aria-describedby="emailHelp">
               </div>
             
             <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input" name="important" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -55,8 +55,12 @@
     </div>
 
     <div class="container">
+      {% if newDocs is defined %}
+      No notes to display
+      {% endif %}
+        <h2> Your Notes</h2>
         {% for item in newDocs %}
-            <li><a href="{{item.href}}">{{item.note}}</a></li>
+            <div>{{item.note}}</div>
         {% endfor %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
